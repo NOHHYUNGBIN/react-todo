@@ -1,4 +1,4 @@
-import {FaTrashAlt} from 'react-icons/fa'
+import {FaTrashAlt, FaUnderline} from 'react-icons/fa'
 import style from './Todo.module.css'
 export default function Todo({todo, onUpdate, onDelete}) {
     const {id, text, status} = todo;
@@ -17,10 +17,14 @@ export default function Todo({todo, onUpdate, onDelete}) {
                 id={id} 
                 checked={status === 'completed'}
                 onChange={handleChange}
+            />
 
-                />
-            <label htmlFor={id}  className={style.text}>
-                {todo.text}
+            <label 
+                htmlFor={id}  
+                className={style.text} 
+                style={status === 'completed' ? {textDecorationLine:'line-through'}:{}}
+            >
+                {text}
             </label>
             <span className={style.icon}>
                 <button onClick={handleDelete} className={style.button}>
